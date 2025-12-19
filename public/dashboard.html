@@ -960,8 +960,8 @@
                 Made with ❤️ by <a href="https://github.com/farinchan" target="_blank">Farin Chan</a> | 
                 <strong>Chatery API</strong> - WhatsApp Multi-Session Gateway
             </div>
-            <div style="font-size: 12px; color: var(--text-muted);">
-                © 2024 Chatery. Open Source under MIT License.
+            <div style="font-size: 12px; color: var(--text-muted);" id="copyright-year">
+                © <span id="current-year">2024</span> Chatery. Open Source under MIT License.
             </div>
         </div>
     </footer>
@@ -1027,7 +1027,6 @@
                     <input type="url" class="form-input" id="newWebhookUrl" placeholder="https://your-server.com/webhook">
                 </div>
                 <div class="form-group" style="margin-bottom: 12px;">
-                    <label class="form-label">Events (optional - leave empty for all events)</label>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                         <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="message"> message
@@ -1084,6 +1083,9 @@
         let sessions = [];
         let isAuthenticated = false;
         let apiKey = '';
+
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
 
         // Get API headers with API key
         function getApiHeaders(includeContentType = true) {
